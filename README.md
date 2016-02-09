@@ -1,4 +1,4 @@
-# [redux-storage-decorator-debounce][]
+# redux-storage-decorator-debounce
 
 [![build](https://travis-ci.org/mathieudutour/redux-storage-decorator-migrate.svg)](https://travis-ci.org/mathieudutour/redux-storage-decorator-migrate)
 [![dependencies](https://david-dm.org/mathieudutour/redux-storage-decorator-migrate.svg)](https://david-dm.org/mathieudutour/redux-storage-decorator-migrate)
