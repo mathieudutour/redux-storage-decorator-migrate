@@ -1,0 +1,48 @@
+{
+  "name": "redux-storage-decorator-migrate",
+  "version": "1.0.0",
+  "description": "Version storage with migration for redux-storage",
+  "main": "build/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "test": "make lint test",
+    "prepublish": "make clean build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathieudutour/redux-storage-decorator-migrate.git"
+  },
+  "homepage": "https://github.com/mathieudutour/redux-storage-decorator-migrate",
+  "keywords": [
+    "redux",
+    "redux-storage",
+    "redux-storage-decorator"
+  ],
+  "author": "Mathieu Dutour <mathieu@dutour.me>",
+  "files": [
+    "build/",
+    "src",
+    "!**/__tests__/**"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "0.11.0",
+    "babel-cli": "^6.4.0",
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^5.0.0-beta9",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-register": "^6.4.3",
+    "eslint": "^1.10.3",
+    "eslint-config-standard": "^4.4.0",
+    "eslint-plugin-markdown": "^1.0.0-beta.1",
+    "eslint-plugin-standard": "^1.3.1",
+    "release-it": "^2.3.1",
+    "sinon": "^1.17.3",
+    "sinon-as-promised": "4.0.0"
+  },
+  "peerDependencies": {
+    "redux-storage": "^3.0.0"
+  }
+}

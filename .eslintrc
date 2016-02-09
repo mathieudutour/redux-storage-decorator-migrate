@@ -1,0 +1,17 @@
+{
+  "extends": "standard",
+  "parser": "babel-eslint",
+  "plugins": [
+    "markdown"
+  ],
+  "env": {
+    "mocha": true,
+    "node": true
+  },
+  "globals": {
+    "expect": true
+  },
+  "rules": {
+    "no-unused-expressions": 0
+  }
+}
