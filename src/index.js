@@ -4,15 +4,15 @@ export default (engine, currentVersion = 0, key = 'redux-storage-decorators-migr
     ...engine,
 
     load () {
-      return engine.load().then(state => {
+      return engine.load().then((state) => {
         const fromVersion = state[key] || 0
         let migratedState = state
 
-        const migrationsToApply = migrations.filter(migration => {
+        const migrationsToApply = migrations.filter((migration) => {
           return migration.version > fromVersion && migration.version <= currentVersion
-        }).sort((m1, m2) => m2.version < m1.version).map(m => m.migration)
+        }).sort((m1, m2) => m2.version < m1.version).map((m) => m.migration)
 
-        migrationsToApply.forEach(migration => {
+        migrationsToApply.forEach((migration) => {
           // Do nothing if migration returns nothing. Good for experiments.
           // Migration isn't applied until it returns something.
           migratedState = migration(migratedState) || migratedState
