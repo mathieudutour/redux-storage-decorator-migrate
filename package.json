@@ -43,6 +43,6 @@
     "sinon-as-promised": "^4.0.0"
   },
   "peerDependencies": {
-    "redux-storage": "^3.0.0"
+    "redux-storage": "^4.0.0"
   }
 }
