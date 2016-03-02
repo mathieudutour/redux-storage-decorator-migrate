@@ -1,6 +1,6 @@
 {
   "name": "redux-storage-decorator-migrate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Version storage with migration for redux-storage",
   "main": "build/index.js",
   "jsnext:main": "src/index.js",
@@ -43,6 +43,6 @@
     "sinon-as-promised": "^4.0.0"
   },
   "peerDependencies": {
-    "redux-storage": "^3.0.0"
+    "redux-storage": ">3.0.0"
   }
 }
