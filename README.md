@@ -31,7 +31,7 @@ engine.addMigration(3, (state) => { /* migration step for 3 */ return state; });
 
 ## Testing migrations without a store (applying against ad-hoc state)
 
-```
+```js
 import {buildMigrationEngine} from 'redux-storage-decorator-migrate'
 const versionKey = 'redux-storage-decorators-migrate-version'
  
@@ -51,6 +51,34 @@ const migratedState = migrationEngine(someTestState)
 
 console.log(migratedState.myFancyStateProperty)
 // B
+```
+
+## Advanced Usage
+
+Handling your migration engine explicitly:
+
+```js
+import migrate, {buildMigrationEngine} from 'redux-storage-decorator-migrate'
+const versionKey = 'redux-storage-decorators-migrate-version'
+
+const migrations = [{
+  version: 1,
+  migration: (state) => ({ /* migration step for 1 */ return state; })
+}, {
+  version: 2,
+  migration: (state) => ({ /* migration step for 2 */ return state; })
+}]
+
+const migrationEngine = buildMigrationEngine(1, versionKey, migrations)
+
+engine = migrate(engine, 3, versionKey, migrations, migrationEngine);
+engine.addMigration(3, (state) => { /* migration step for 3 */ return state; }); // still possible
+
+// Migrate redux's initialState if provided
+const migratedInitialState = migrationEngine(initialState || {});
+
+// Redux store creation
+const reduxStore = createStore(reduxStorage.reducer(combineReducers(reducers)), migratedInitialState, compose(...enhancers));
 ```
 
 ## License
