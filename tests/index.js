@@ -2,7 +2,7 @@ import test from 'ava'
 import sinon from 'sinon'
 import 'sinon-as-promised'
 
-import migrate from '../src/'
+import migrate, {buildMigrationEngine} from '../src/'
 
 function identityStub (arg) {
   return new Promise((resolve) => resolve(arg))
@@ -106,6 +106,28 @@ test('should applied migrations to the loaded state when the current version is 
   const state = await engine.load()
 
   t.same(state, { key: 2 })
+})
+
+test('should apply migrations to ad-hoc state (for testing or for initialStates)', async (t) => {
+  t.plan(1)
+
+  const versionKey = 'redux-storage-decorators-migrate-version'
+
+  const someTestState = {
+    [versionKey]: 0,
+    myFancyStateProperty: 'A'
+  }
+
+  const someExampleMigration = {
+    version: 1,
+    migration: (state) => ({...state, myFancyStateProperty: 'B'})
+  }
+
+  const migrationEngine = buildMigrationEngine(1, versionKey, [someExampleMigration])
+
+  const migratedState = migrationEngine(someTestState)
+
+  t.same(migratedState, { myFancyStateProperty: 'B' })
 })
 
 test('should not applied migrations to the loaded state when the current version is the same', async (t) => {
