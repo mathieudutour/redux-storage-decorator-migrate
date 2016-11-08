@@ -26,7 +26,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@mathieudutour/js-fatigue": "^1.0.2"
+    "@mathieudutour/js-fatigue": "^1.0.2",
+    "babel-eslint": "^7.1.0"
   },
   "peerDependencies": {
     "redux-storage": ">3.0.0"
