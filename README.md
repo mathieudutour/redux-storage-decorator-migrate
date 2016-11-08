@@ -29,6 +29,30 @@ engine.addMigration(2, (state) => { /* migration step for 2 */ return state; });
 engine.addMigration(3, (state) => { /* migration step for 3 */ return state; });
 ```
 
+## Testing migrations without a store (applying against ad-hoc state)
+
+```
+import {buildMigrationEngine} from 'redux-storage-decorator-migrate'
+const versionKey = 'redux-storage-decorators-migrate-version'
+ 
+const someTestState = {
+  [versionKey]: 0,
+  myFancyStateProperty: 'A'
+}
+
+const someExampleMigration = {
+  version: 1,
+  migration: (state) => ({...state, myFancyStateProperty: 'B'})
+}
+
+const migrationEngine = buildMigrationEngine(1, versionKey, [someExampleMigration])
+
+const migratedState = migrationEngine(someTestState)
+
+console.log(migratedState.myFancyStateProperty)
+// B
+```
+
 ## License
 
   MIT
