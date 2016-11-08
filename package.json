@@ -1,6 +1,6 @@
 {
   "name": "redux-storage-decorator-migrate",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Version storage with migration for redux-storage",
   "main": "build/index.js",
   "jsnext:main": "src/index.js",
@@ -26,8 +26,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@mathieudutour/js-fatigue": "^1.0.2",
-    "babel-eslint": "^7.1.0"
+    "@mathieudutour/js-fatigue": "^1.0.6"
   },
   "peerDependencies": {
     "redux-storage": ">3.0.0"
