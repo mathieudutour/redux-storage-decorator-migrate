@@ -29,6 +29,33 @@ engine.addMigration(2, (state) => { /* migration step for 2 */ return state; });
 engine.addMigration(3, (state) => { /* migration step for 3 */ return state; });
 ```
 
+### Usage with `redux-storage-decorator-filter` and other decorators
+
+```js
+import * as storage from 'redux-storage'
+import createEngine from 'redux-storage-engine-localstorage'
+import filter from 'redux-storage-decorator-filter'
+import debounce from 'redux-storage-decorator-debounce'
+import migrate from 'redux-storage-decorator-migrate'
+
+const reducer = storage.reducer(reducers)
+const stateVersionProp = '_stateVersion'
+const whitelist = [stateVersionProp]
+const blacklist = []
+const engine = migrate(
+  debounce(
+    filter(
+      createEngine('your.storage.identifier'),
+      whitelist,
+      blacklist
+    ), 1000
+  ), 0
+)
+
+// Your first migration:
+engine.addMigration(1, (state) => { /* migration step for 1 */ return state; });
+```
+
 ## Testing migrations without a store (applying against ad-hoc state)
 
 ```js
