@@ -40,7 +40,7 @@ import migrate from 'redux-storage-decorator-migrate'
 
 const reducer = storage.reducer(reducers)
 const stateVersionProp = '_stateVersion'
-const whitelist = [stateVersionProp]
+const whitelist = [stateVersionProp] // <-- Don't forget to whitelist your state version property
 const blacklist = []
 const engine = migrate(
   debounce(
